@@ -15,9 +15,10 @@ def transform(input_filepath, debug):
 
     try:
         input_file = open(f"{input_filepath}", "r")
+        lines = input_file.readlines()
 
-        click.echo("PARSED TIMESHEET OUTPUT:")
-        output = parse_timesheet(input_file)
+        click.echo("PARSED TIMESHEET OUTPUT:\n")
+        output = parse_timesheet(lines)
         click.echo(output)
 
         input_file.close()

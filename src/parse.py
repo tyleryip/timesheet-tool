@@ -6,14 +6,26 @@ TIME_FORMAT = '%H:%M'
 
 timespan_regex = re.compile("^([1-9][\d]?\:[\d]+)\-([1-9][\d]?\:[\d]+)$")
 
-def parse_timesheet(input_file):
+def parse_timesheet(lines):
+    """Parses a sequential timesheet into a duration for each task
+
+    Parameters
+    ----------
+    lines: list[str]
+        A list of sequential strings composing the timesheet
+
+    Returns
+    ----------
+    output
+        A string containing each task and its duration in the input order
+    """
+
     output = ""
 
     tasks = {}
     current_task = ""
 
     # Parse line by line to extract tasks and convert timespans into durations
-    lines = input_file.readlines()
     for line in lines:
         timespan_match = timespan_regex.match(line)
 
@@ -53,8 +65,8 @@ def parse_timesheet(input_file):
     for key, value in tasks.items():
         # Handle edge case for singular hour
         if value != 1:
-            output += f"\n{key}\n{value} hours\n"
+            output += f"{key}\n{value} hours\n"
         else:
-            output += f"\n{key}\n1 hour\n"
+            output += f"{key}\n1 hour\n"
 
     return output
