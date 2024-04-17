@@ -65,8 +65,10 @@ def parse_timesheet(lines):
     for key, value in tasks.items():
         # Handle edge case for singular hour
         if value != 1:
-            output += f"{key}\n{value} hours\n"
+            output += f"{key}\n{value} hours"
         else:
-            output += f"{key}\n1 hour\n"
+            output += f"{key}\n1 hour"
+        
+        output += "\n\n"
 
     return output
