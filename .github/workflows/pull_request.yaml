@@ -15,11 +15,8 @@ jobs:
         run: |
           cd ./src
           python3 -m pip install --upgrade pip
-          python3 -m venv .venv
-          . .venv/bin/activate
           pip install -r requirements.txt
       - name: Test with pytest
         run: |
-          . .venv/bin/activate
           pip install pytest pytest-cov
           pytest
