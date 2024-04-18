@@ -1,6 +1,5 @@
 import click
 import logging
-from os import path
 from parse import parse_timesheet
 
 @click.command()
