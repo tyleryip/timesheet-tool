@@ -2,6 +2,14 @@
 
 A simple CLI tool to convert annotated time spans into durations.
 
+## Features
+
+The following features have been implemented or are planned for future development:
+
+- [x] Text file timesheet input
+- [x] Command prompt timesheet input
+- [ ] Total hours
+
 ## Installation
 
 To activate the virtual environment, run the following from the root directory: `. .venv/bin/activate`
