@@ -1,0 +1,23 @@
+Standup
+9:00-9:30
+
+Backlog Refinement
+9:30-11:00
+
+Ticket 134782
+11:00-12:00
+
+Daily Story Review Meeting
+1:00-2:00
+
+Azure DevOps Overview Meeting
+2:00-3:00
+
+Ticket 134782
+2:45-3:00
+
+Code Review
+3:00-4:15
+
+Weekly Status Update Meeting
+4:15-5:00
