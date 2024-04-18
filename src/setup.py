@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'timesheet = timesheet:cli',
+            'timesheet = main:transform',
         ],
     },
 )
