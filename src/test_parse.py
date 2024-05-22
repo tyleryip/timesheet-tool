@@ -6,7 +6,7 @@ class TestParse:
         input = ["Standup", 
                  "9:00-9:30"]
         
-        expected_output = "Standup\n0.5 hours\n\n"
+        expected_output = "Standup (0.5 hours)\n"
 
         output = parse_timesheet(input)
         assert output == expected_output
@@ -17,7 +17,7 @@ class TestParse:
                  "Dev Meeting",
                  "9:30-10:30"]
         
-        expected_output = "Standup\n0.5 hours\n\nDev Meeting\n1 hour\n\n"
+        expected_output = "Standup (0.5 hours)\nDev Meeting (1 hour)\n"
 
         output = parse_timesheet(input)
         assert output == expected_output
@@ -30,7 +30,7 @@ class TestParse:
                  "Standup",
                  "10:30-11:00"]
 
-        expected_output = "Standup\n1 hour\n\nDev Meeting\n1 hour\n\n"
+        expected_output = "Standup (1 hour)\nDev Meeting (1 hour)\n"
 
         output = parse_timesheet(input)
         assert output == expected_output
@@ -39,7 +39,7 @@ class TestParse:
         input = ["Long Task", 
                  "9:00-5:00"]
         
-        expected_output = "Long Task\n8.0 hours\n\n"
+        expected_output = "Long Task (8.0 hours)\n"
 
         output = parse_timesheet(input)
         assert output == expected_output
@@ -48,7 +48,7 @@ class TestParse:
         input = ["Task Starting at Noon", 
                  "12:15-1:00"]
         
-        expected_output = "Task Starting at Noon\n0.75 hours\n\n"
+        expected_output = "Task Starting at Noon (0.75 hours)\n"
 
         output = parse_timesheet(input)
         assert output == expected_output
