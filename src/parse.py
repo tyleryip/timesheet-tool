@@ -69,6 +69,6 @@ def parse_timesheet(lines):
         else:
             output += f"{key} (1 hour)"
         
-        output += "\n"
+        output += "\n\n"
 
     return output
