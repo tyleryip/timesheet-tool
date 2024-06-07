@@ -52,3 +52,12 @@ class TestParse:
 
         output = parse_timesheet(input)
         assert output == expected_output
+
+    def test_task_starting_at_noon_and_ending_at_noon(self):
+        input = ["Task Starting at Noon and Ending at Noon", 
+                 "12:15-12:45"]
+        
+        expected_output = "Task Starting at Noon and Ending at Noon (0.5 hours)\n\n"
+
+        output = parse_timesheet(input)
+        assert output == expected_output

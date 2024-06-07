@@ -40,9 +40,16 @@ def parse_timesheet(lines):
             start_time = datetime.strptime(start, TIME_FORMAT)
             end_time = datetime.strptime(end, TIME_FORMAT)
 
-            # Edge case: if task starts during the noon hour, 
-            if start_time.hour == 12:
+            # Edge case: if task only starts during the noon hour and does not end, 
+            # we need to convert the start time hour to 0.
+            if start_time.hour == 12 and end_time.hour != 12:
                 start_time = start_time.replace(hour=0)
+
+            # Edge case: if task starts during the noon hour AND ends during the noon hour, 
+            # we need to convert the start and end time to 0.
+            if start_time.hour == 12 and end_time.hour == 12:
+                start_time = start_time.replace(hour=0)
+                end_time = end_time.replace(hour=0)
 
             # Edge case: if task starts in morning and ends in afternoon, we need to add 12 hours to the end time
             if end_time < start_time:
