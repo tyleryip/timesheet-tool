@@ -8,7 +8,7 @@ class TestParse:
         
         expected_output = "Standup (0.5 hours)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
         assert output == expected_output
     
     def test_two_tasks(self):
@@ -19,7 +19,7 @@ class TestParse:
         
         expected_output = "Standup (0.5 hours)\n\nDev Meeting (1 hour)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
         assert output == expected_output
 
     def test_duplicate_task(self):
@@ -32,7 +32,7 @@ class TestParse:
 
         expected_output = "Standup (1 hour)\n\nDev Meeting (1 hour)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
         assert output == expected_output
 
     def test_long_task(self):
@@ -41,7 +41,7 @@ class TestParse:
         
         expected_output = "Long Task (8.0 hours)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
         assert output == expected_output
 
     def test_task_starting_at_noon(self):
@@ -50,7 +50,7 @@ class TestParse:
         
         expected_output = "Task Starting at Noon (0.75 hours)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
         assert output == expected_output
 
     def test_task_starting_at_noon_and_ending_at_noon(self):
@@ -59,5 +59,16 @@ class TestParse:
         
         expected_output = "Task Starting at Noon and Ending at Noon (0.5 hours)\n\n"
 
-        output = parse_timesheet(input)
+        output = parse_timesheet(input, False)
+        assert output == expected_output
+
+    def test_show_total(self):
+        input = ["Standup", 
+                 "9:00-9:30",
+                 "Dev Meeting",
+                 "9:30-10:30"]
+        
+        expected_output = "Standup (0.5 hours)\n\nDev Meeting (1 hour)\n\nTOTAL TIME: 1.5 hours"
+
+        output = parse_timesheet(input, True)
         assert output == expected_output

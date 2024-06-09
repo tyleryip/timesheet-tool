@@ -5,7 +5,8 @@ from parse import parse_timesheet
 @click.command()
 @click.option('-i', '--input_filepath', help='input filepath')
 @click.option('-d', '--debug', is_flag=True, help="debug mode")
-def transform(input_filepath, debug):
+@click.option('-t', '--show_total', is_flag=True, help="show total")
+def transform(input_filepath, debug, show_total):
     logging.basicConfig(level=10 if debug else 20)
     lines = []
     
@@ -29,7 +30,7 @@ def transform(input_filepath, debug):
             click.echo(f"Could not open {input_filepath}")
 
     click.echo("\n--------PARSED TIMESHEET OUTPUT--------\n")
-    output = parse_timesheet(lines)
+    output = parse_timesheet(lines, show_total)
     click.echo(output)
 
 if __name__ == '__main__':

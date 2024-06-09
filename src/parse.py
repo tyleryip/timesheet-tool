@@ -6,7 +6,7 @@ TIME_FORMAT = '%H:%M'
 
 timespan_regex = re.compile("^([1-9][\d]?\:[\d]+)\-([1-9][\d]?\:[\d]+)$")
 
-def parse_timesheet(lines):
+def parse_timesheet(lines, show_total=False):
     """Parses a sequential timesheet into a duration for each task
 
     Parameters
@@ -21,6 +21,7 @@ def parse_timesheet(lines):
     """
 
     output = ""
+    total_time = 0
 
     tasks = {}
     current_task = ""
@@ -62,6 +63,7 @@ def parse_timesheet(lines):
             logging.debug(f"{end_time=} {start_time=} {duration_in_hours=}")
 
             tasks[current_task] += duration_in_hours
+            total_time += duration_in_hours
 
         else:
             current_task = line.strip()
@@ -77,5 +79,8 @@ def parse_timesheet(lines):
             output += f"{key} (1 hour)"
         
         output += "\n\n"
+
+    if show_total:
+        output += f"TOTAL TIME: {total_time} hours"
 
     return output
