@@ -8,15 +8,27 @@ The following features have been implemented or are planned for future developme
 
 - [x] Text file timesheet input
 - [x] Command prompt timesheet input
-- [ ] Total hours
+- [x] Total hours
 
 ## Installation
+
+### Linux/MacOS
 
 To activate the virtual environment, run the following from the root directory: `. .venv/bin/activate`
 
 From the `src` directory, run the following to install dependencies: `pip install -r requirements.txt`
 
+### Windows
+
+To create a virtual environment, run the following from the root directory `python -m venv .venv`
+
+To activate the virtual environment, run the following from the root directory: `.venv\Scripts\Activate.ps1`
+
+From the `src` directory, run the following to install dependencies: `pip install -r requirements.txt`
+
 ## Usage
+
+Activate the virtual environment using the last step from the above sections.
 
 You can run the CLI as a normal python file. From the `src` directory, run the following: `python3 main.py`
 
